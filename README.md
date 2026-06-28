@@ -16,34 +16,6 @@ The lab currently runs a 3-node MicroK8s cluster with one control plane node and
 | `k8s-w-01` | Worker node | Proxmox VM | Ubuntu Server | 2 cores | 4 GB | 40 GB |
 | `k8s-w-02` | Worker node | Proxmox VM | Ubuntu Server | 2 cores | 4 GB | 40 GB |
 
-## Current Status
-
-### Completed
-
-- [x] Created 3 Ubuntu Server VMs in Proxmox
-- [x] Installed MicroK8s on all nodes
-- [x] Joined 2 worker nodes to the control plane
-- [x] Verified all 3 nodes are Ready
-- [x] Deployed nginx test app
-- [x] Exposed nginx using a NodePort service
-- [x] Confirmed NodePort access from all 3 node IPs
-- [x] Scaled nginx deployment to 3 replicas
-- [x] Verified one nginx pod running on each node
-
-### Planned
-
-- [ ] Add ingress controller
-- [ ] Add MetalLB for local load balancing
-- [ ] Deploy app through ingress instead of only NodePort
-- [ ] Add persistent storage test
-- [ ] Test Kubernetes self-healing by deleting a pod
-- [ ] Write first troubleshooting incident report
-- [ ] Add Rancher UI for cluster visibility and workload management
-- [ ] Deploy an app through Rancher UI
-- [ ] Compare CLI-based deployment vs Rancher UI deployment
-- [ ] Add monitoring dashboard
-- [ ] Create final architecture diagram
-
 ## Version Milestones
 
 | Version | Focus | Status |
@@ -59,17 +31,19 @@ The lab currently runs a 3-node MicroK8s cluster with one control plane node and
 | `v1.8.0` | Docker-to-Kubernetes app migration | Planned |
 | `v1.9.0` | Backup and restore testing | Planned |
 
-## v1.0.0 Summary
+## Current Stable Baseline
 
-The first working release of this homelab includes:
+`v1.0.0` is the first stable working baseline of this Kubernetes homelab.
 
-- 3-node MicroK8s cluster
-- 1 control plane node
-- 2 worker nodes
-- nginx test deployment
-- NodePort service exposure
-- 3 nginx replicas
-- one nginx pod scheduled on each node
+This release includes
+- 3-node MicroK8s cluster running on Ubuntu Server VMs in Proxmox
+- 1 control plane node and 2 worker nodes.
+- A test nginx workload was deployed as `hello-web`
+- Exposed through a NodePort service
+- Scaled to 3 replicas
+- Verified with one pod running on each node.
+
+Sanitized Kubernetes manifests for the deployment and service are included in this repository. Full release details are available in the GitHub Releases page under `v1.0.0`.
 
 ## Verification Commands
 
@@ -78,3 +52,9 @@ microk8s kubectl get nodes
 microk8s kubectl get pods -o wide
 microk8s kubectl get deployment nginx-test
 microk8s kubectl get svc nginx-test
+```
+
+
+
+
+
