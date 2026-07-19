@@ -50,8 +50,8 @@ Sanitized Kubernetes manifests for the deployment and service are included in th
 ```bash
 microk8s kubectl get nodes
 microk8s kubectl get pods -o wide
-microk8s kubectl get deployment nginx-test
-microk8s kubectl get svc nginx-test
+microk8s kubectl get deployment hello-web
+microk8s kubectl get svc hello-web
 ```
 
 
